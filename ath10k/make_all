@@ -1,0 +1,6 @@
+#!/bin/bash
+
+KERNEL_BASE_LINUS=${HOME}/kernel/2.6/linux-linux
+
+make -C ${KERNEL_BASE_LINUS}.x64 SUBDIRS=$PWD modules
+
