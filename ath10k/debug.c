@@ -3225,12 +3225,6 @@ int ath10k_debug_create(struct ath10k *ar)
 	INIT_LIST_HEAD(&ar->debug.fw_stats.vdevs);
 	INIT_LIST_HEAD(&ar->debug.fw_stats.peers);
 
-	debugfs_create_file("thresh62_ext", S_IRUGO | S_IWUSR,
-			    ar->debug.debugfs_phy, ar, &fops_thresh62_ext);
-
-	debugfs_create_file("ct_special", S_IRUGO | S_IWUSR,
-			    ar->debug.debugfs_phy, ar, &fops_ct_special);
-
 	return 0;
 }
 
@@ -3349,6 +3343,12 @@ int ath10k_debug_register(struct ath10k *ar)
 
 	debugfs_create_file("tpc_stats", S_IRUSR,
 			    ar->debug.debugfs_phy, ar, &fops_tpc_stats);
+
+	debugfs_create_file("thresh62_ext", S_IRUGO | S_IWUSR,
+			    ar->debug.debugfs_phy, ar, &fops_thresh62_ext);
+
+	debugfs_create_file("ct_special", S_IRUGO | S_IWUSR,
+			    ar->debug.debugfs_phy, ar, &fops_ct_special);
 
 	if (test_bit(WMI_SERVICE_COEX_GPIO, ar->wmi.svc_map))
 		debugfs_create_file("btcoex", S_IRUGO | S_IWUSR,
